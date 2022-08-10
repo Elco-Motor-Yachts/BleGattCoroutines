@@ -52,5 +52,6 @@ android {
 dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1-native-mt'
-    implementation("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0")
+    implementation("com.louiscad.splitties:splitties-appctx:3.0.0")
+    implementation("com.louiscad.splitties:splitties-bitflags:3.0.0")
 }
