@@ -312,7 +312,11 @@ constructor(
         }
 
         override fun onCharacteristicChanged(gatt: BG, characteristic: BGC) {
-            coroutineScope.launch { characteristicChangedFlow.emit(characteristic) }
+            // fix for https://github.com/Beepiz/BleGattCoroutines/issues/60
+            val charCopy = BGC(characteristic.uuid, characteristic.properties, characteristic.permissions).apply {
+                value = characteristic.value?.clone()
+            }
+            coroutineScope.launch { characteristicChangedFlow.emit(charCopy) }
         }
 
         override fun onDescriptorRead(gatt: BG, descriptor: BGD, status: Int) {
